@@ -16,10 +16,6 @@ public class SimpleRotationSystem : IExecuteSystem
         _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Rotation));
     }
 
-
-    // protected override void Execute(GameEntity e)
-    // {
-    // }
     public  void Execute()
     {
         delaTime = _metaContext.timeService.instance.GetDeltaTime();

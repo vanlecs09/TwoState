@@ -18,6 +18,7 @@ public class App : MonoBehaviour
         _systems = CreateSystems(_contexts);
         // _contexts.game.CreateSimpleMovingEntity();
         _systems.Initialize();
+        _contexts.game.CreateGenerateBoardEntity();
     }
 
 
@@ -29,7 +30,8 @@ public class App : MonoBehaviour
         new UnityViewService(), // responsible for creating gameobjects for views
                                 // new UnityApplicationService(), // gives app functionality like .Quit()
         new UnityTimeService(), // gives .deltaTime, .fixedDeltaTime etc
-        new PrefabPoolSystem()
+        new PrefabPoolService(),
+        new GenerateBoardService()
         // new InControlInputService(), // provides user input
         // next two are monobehaviours attached to gamecontroller
         // GetComponent<UnityAiService>(), // async steering calculations on MB
@@ -45,6 +47,7 @@ public class App : MonoBehaviour
         return new Feature("Systems")
         // .Add(new LogSystems(contexts))
         .Add(new ServiceRegistrationSystems(contexts, _services))
+        .Add(new GeneratteBoardSystem(contexts))
         .Add(new AddViewSystem(contexts))
         .Add(new SimpleMovementSystem(contexts))
         .Add(new SimpleRotationSystem(contexts))

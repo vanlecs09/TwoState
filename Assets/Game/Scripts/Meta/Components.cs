@@ -19,6 +19,12 @@ public class ObjectPoolComponent: IComponent
     public IObjectPoolService instance;
 }
 
+[Meta, Unique]
+public class GenerateBoardServiceComponent: IComponent
+{
+    public IGenerateBoardService instance;
+}
+
 
 [Game, Event(EventTarget.Self)]
 public class PositionComponent: IComponent

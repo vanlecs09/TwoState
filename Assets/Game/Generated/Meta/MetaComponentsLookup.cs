@@ -8,19 +8,22 @@
 //------------------------------------------------------------------------------
 public static class MetaComponentsLookup {
 
-    public const int ObjectPool = 0;
-    public const int TimeService = 1;
-    public const int ViewService = 2;
+    public const int GenerateBoardService = 0;
+    public const int ObjectPool = 1;
+    public const int TimeService = 2;
+    public const int ViewService = 3;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
+        "GenerateBoardService",
         "ObjectPool",
         "TimeService",
         "ViewService"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(GenerateBoardServiceComponent),
         typeof(ObjectPoolComponent),
         typeof(TimeServiceComponent),
         typeof(ViewServiceComponent)

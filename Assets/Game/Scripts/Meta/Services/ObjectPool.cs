@@ -144,7 +144,7 @@ public class PrefabPool
     }
 }
 
-public class PrefabPoolSystem : IObjectPoolService
+public class PrefabPoolService : IObjectPoolService
 {
     // Dictionary<string, GameObject
     Dictionary<GameObject, PrefabPool> _prefabToPoolMap = new Dictionary<GameObject, PrefabPool>();

@@ -9,7 +9,7 @@ public class UnityViewService : IViewService
 
     public void LoadAsset(Contexts contexts, IEntity entity, string assetName, Transform parent)
     {
-#if UNITY_EDITOR
+
         GameObject gameObjet = null;
         if (_prefabSearchList.ContainsKey(assetName))
         {
@@ -17,28 +17,23 @@ public class UnityViewService : IViewService
         }
         else
         {
+#if UNITY_EDITOR
             gameObjet = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(assetName + ".prefab"));
+#else 
+#endif
             _prefabSearchList.Add(assetName, gameObjet);
         }
 
         var viewGo = contexts.meta.objectPool.instance.Spawn(gameObjet);
-#endif
+
         if (viewGo != null)
         {
-            var viewController = viewGo.GetComponent<IViewController>();
-            if (viewController != null)
-            {
-                viewController.InitializeView(contexts, entity);
-            }
-
             var eventListeners = viewGo.GetComponents<IEventListener>();
             foreach (var listener in eventListeners)
             {
                 listener.RegisterListeners(entity);
             }
-
             viewGo.transform.parent = parent.transform;
-            // viewGo.UnLink();
         }
     }
 }

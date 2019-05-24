@@ -11,7 +11,7 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
     {
         _gameContext = contexts.game;
         _metaContext = contexts.meta;
-         _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Rotation));
+        _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Rotation));
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -27,18 +27,26 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
     {
         foreach (var e in entities)
         {
-            _metaContext.generateBoardService.instance.GenerateBoard(new Vector2(5,5));
+            _metaContext.generateBoardService.instance.GenerateBoard(new Vector2(5, 5));
             // _metaContext.generateBoardService.instance.PrintBoard();
-            e.Destroy();
-            
+            int[,] baords = _metaContext.generateBoardService.instance.GetBoard();
+            // Debug.Log(baords);
+            // Debug.Log(baords.Length);
+            for (int i = 0; i < 5; i++)
+            {
+                for(int j = 0; j < 5; j ++) 
+                {
+                    _gameContext.CreateTileEntity(new Vector2(i, j), baords[i,j] == 1);
+                }
+            }
         }
     }
 
     public void Cleanup()
     {
-        foreach(var e in _movers)
+        foreach (var e in _movers)
         {
-            e.Destroy();
+            // e.Destroy();
         }
     }
 }

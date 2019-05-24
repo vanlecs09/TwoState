@@ -18,10 +18,10 @@ public class App : MonoBehaviour
         _systems = CreateSystems(_contexts);
         // _contexts.game.CreateSimpleMovingEntity();
         _systems.Initialize();
-        // _contexts.game.CreateGenerateBoardEntity();
-        for(int i = 0; i < 100; i++) {
-            Debug.Log(GetNextRandomPoint());
-        }
+        _contexts.game.CreateGenerateBoardEntity();
+        // for(int i = 0; i < 100; i++) {
+            // Debug.Log(GetNextRandomPoint());
+        // }
     }
 
     Vector2 GetNextRandomPoint()

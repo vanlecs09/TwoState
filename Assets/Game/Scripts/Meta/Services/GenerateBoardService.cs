@@ -4,7 +4,7 @@ public class GenerateBoardService : IGenerateBoardService
     int[,] _board;
     Vector2 _demension;
 
-    int[,] GetBoard()
+    public int[,] GetBoard()
     {
         return _board;
     }
@@ -19,10 +19,10 @@ public class GenerateBoardService : IGenerateBoardService
         while (currentTouch < numberTouch)
         {
             Vector2 nextPoint = GetNextRandomPoint();
-            Debug.Log(nextPoint);
+            // Debug.Log(nextPoint);
             ChangeRelateStateFromPoint(nextPoint);
             currentTouch++;
-            PrintBoard();
+            // PrintBoard();
         }
     }
 

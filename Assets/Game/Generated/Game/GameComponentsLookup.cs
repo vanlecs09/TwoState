@@ -16,9 +16,12 @@ public static class GameComponentsLookup {
     public const int Rotation = 5;
     public const int RotationListener = 6;
     public const int Speed = 7;
-    public const int Velocity = 8;
+    public const int TileActive = 8;
+    public const int TileActiveListener = 9;
+    public const int TileCoponent = 10;
+    public const int Velocity = 11;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -29,6 +32,9 @@ public static class GameComponentsLookup {
         "Rotation",
         "RotationListener",
         "Speed",
+        "TileActive",
+        "TileActiveListener",
+        "TileCoponent",
         "Velocity"
     };
 
@@ -41,6 +47,9 @@ public static class GameComponentsLookup {
         typeof(RotationComponent),
         typeof(RotationListenerComponent),
         typeof(SpeedComponent),
+        typeof(TileActiveComponent),
+        typeof(TileActiveListenerComponent),
+        typeof(TileCoponent),
         typeof(VelocityComponent)
     };
 }

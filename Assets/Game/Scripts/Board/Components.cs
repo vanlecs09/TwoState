@@ -6,6 +6,3 @@ public class GenerateBoardComponent : IComponent
 {
 
 }
-
-// [Game]
-// public class 

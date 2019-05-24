@@ -18,14 +18,13 @@ public class UnityViewService : IViewService
         else
         {
 #if UNITY_EDITOR
-            gameObjet = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(assetName + ".prefab"));
-#else 
+            gameObjet = GameObject.Instantiate(Resources.Load<GameObject>(assetName));
+// #else 
 #endif
             _prefabSearchList.Add(assetName, gameObjet);
         }
 
         var viewGo = contexts.meta.objectPool.instance.Spawn(gameObjet);
-
         if (viewGo != null)
         {
             var eventListeners = viewGo.GetComponents<IEventListener>();
@@ -34,6 +33,8 @@ public class UnityViewService : IViewService
                 listener.RegisterListeners(entity);
             }
             viewGo.transform.parent = parent.transform;
+        } else {
+            Debug.LogError("can not load game object " + assetName);
         }
     }
 }

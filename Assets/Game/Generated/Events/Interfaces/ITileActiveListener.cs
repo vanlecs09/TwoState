@@ -7,5 +7,5 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public interface ITileActiveListener {
-    void OnTileActive(GameEntity entity);
+    void OnTileActive(GameEntity entity, bool value);
 }

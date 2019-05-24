@@ -11,4 +11,5 @@ public class TileCoponent: IComponent
 [Game, Event(EventTarget.Self)]
 public class TileActiveComponent: IComponent
 {
+    public bool value;
 }

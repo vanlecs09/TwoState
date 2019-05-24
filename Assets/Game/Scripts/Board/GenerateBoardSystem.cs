@@ -36,6 +36,7 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
             {
                 for(int j = 0; j < 5; j ++) 
                 {
+                    Debug.Log(baords[i,j]);
                     _gameContext.CreateTileEntity(new Vector2(i, j), baords[i,j] == 1);
                 }
             }

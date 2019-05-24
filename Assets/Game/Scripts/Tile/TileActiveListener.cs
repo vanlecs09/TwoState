@@ -3,16 +3,11 @@ using UnityEngine;
 public class TileActiveListener : MonoBehaviour, ITileActiveListener, IEventListener
 {
     GameEntity _entity;
-    public void OnTileActive(GameEntity entity)
+
+    public void OnTileActive(GameEntity entity, bool value)
     {
-        if (entity.isTileActive)
-        {
-
-        }
-        else
-        {
-
-        }
+        Color spriteColor = value == true ? Color.white : Color.green;
+        gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
     }
 
     public void RegisterListeners(IEntity entity)

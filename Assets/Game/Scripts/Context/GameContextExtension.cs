@@ -20,7 +20,7 @@ public static class GameContextEntesion
     {
         var entity = gameContext.CreateEntity();
         entity.AddAsset("Prefabs/pref_Tile");
-        entity.isTileActive = isTileActive_;
+        entity.AddTileActive(isTileActive_);
         entity.AddTileCoponent(Vector2.zero);
         entity.AddPosition(new Vector3(-2.5f + tilePosition.x * 1.0f, -2.5f + tilePosition.y * 1.0f ));
     }

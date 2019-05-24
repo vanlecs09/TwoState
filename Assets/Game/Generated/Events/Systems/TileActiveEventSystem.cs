@@ -21,16 +21,16 @@ public sealed class TileActiveEventSystem : Entitas.ReactiveSystem<GameEntity> {
     }
 
     protected override bool Filter(GameEntity entity) {
-        return entity.isTileActive && entity.hasTileActiveListener;
+        return entity.hasTileActive && entity.hasTileActiveListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<GameEntity> entities) {
         foreach (var e in entities) {
-            
+            var component = e.tileActive;
             _listenerBuffer.Clear();
             _listenerBuffer.AddRange(e.tileActiveListener.value);
             foreach (var listener in _listenerBuffer) {
-                listener.OnTileActive(e);
+                listener.OnTileActive(e, component.value);
             }
         }
     }

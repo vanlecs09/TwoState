@@ -11,14 +11,16 @@ public static class MetaComponentsLookup {
     public const int GenerateBoardService = 0;
     public const int ObjectPool = 1;
     public const int TimeService = 2;
-    public const int ViewService = 3;
+    public const int UiManagementService = 3;
+    public const int ViewService = 4;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 5;
 
     public static readonly string[] componentNames = {
         "GenerateBoardService",
         "ObjectPool",
         "TimeService",
+        "UiManagementService",
         "ViewService"
     };
 
@@ -26,6 +28,7 @@ public static class MetaComponentsLookup {
         typeof(GenerateBoardServiceComponent),
         typeof(ObjectPoolComponent),
         typeof(TimeServiceComponent),
+        typeof(UiManagementServiceComponent),
         typeof(ViewServiceComponent)
     };
 }

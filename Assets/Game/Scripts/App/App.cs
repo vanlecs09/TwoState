@@ -40,6 +40,7 @@ public class App : MonoBehaviour
         new UnityTimeService(), // gives .deltaTime, .fixedDeltaTime etc
         new PrefabPoolService(),
         new GenerateBoardService()
+        , new UnityUiManagementService(null)
         // new InControlInputService(), // provides user input
         // next two are monobehaviours attached to gamecontroller
         // GetComponent<UnityAiService>(), // async steering calculations on MB

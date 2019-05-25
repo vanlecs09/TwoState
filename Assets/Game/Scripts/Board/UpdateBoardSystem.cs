@@ -29,23 +29,39 @@ public class UpdateBoardSystem : ReactiveSystem<GameEntity>
         foreach (var e in entities)
         {
             _metaContext.generateBoardService.instance.UpdateBoard(e.updateBoard.position);
-            int[,] boards = _metaContext.generateBoardService.instance.GetBoard();
-            for (int i = 0; i < 5; i++)
-            {
-                for(int j = 0; j < 5; j ++) 
-                {
 
-                    // _movers.HandleEntity()
-                    _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Tile));
-                    foreach(var tile in _movers)
+
+            // else
+            {
+                int[,] boards = _metaContext.generateBoardService.instance.GetBoard();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    for (int j = 0; j < 5; j++)
                     {
-                        if(tile.tilePosition.value.x == i && tile.tilePosition.value.y == j)
+                        _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Tile));
+                        foreach (var tile in _movers)
                         {
-                            Debug.Log("here");  
-                            tile.ReplaceTileActive(boards[i,j] == 1);
+                            if (tile.tilePosition.value.x == i && tile.tilePosition.value.y == j)
+                            {
+                                Debug.Log("here");
+                                tile.ReplaceTileActive(boards[i, j] == 1);
+                            }
                         }
                     }
                 }
+            }
+
+            if (_metaContext.generateBoardService.instance.IsBoardClean())
+            {
+                _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Tile));
+                foreach (var tile in _movers)
+                {
+                    // remove game object
+                    tile.isDestroyed = true;
+                }
+
+               _gameContext.CreateGenerateBoardEntity();
             }
         }
     }

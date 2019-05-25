@@ -87,3 +87,8 @@ public class TouchComponent: IComponent
 {
     public Entity entity;
 }
+
+[Game, Event(EventTarget.Self), Cleanup(CleanupMode.DestroyEntity)]
+public sealed class DestroyedComponent : IComponent
+{
+}

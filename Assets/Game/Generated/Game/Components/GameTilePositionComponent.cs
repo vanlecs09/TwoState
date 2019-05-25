@@ -11,17 +11,17 @@ public partial class GameEntity {
     public TilePositionComponent tilePosition { get { return (TilePositionComponent)GetComponent(GameComponentsLookup.TilePosition); } }
     public bool hasTilePosition { get { return HasComponent(GameComponentsLookup.TilePosition); } }
 
-    public void AddTilePosition(UnityEngine.Vector2 newPosition) {
+    public void AddTilePosition(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.TilePosition;
         var component = (TilePositionComponent)CreateComponent(index, typeof(TilePositionComponent));
-        component.value = newPosition;
+        component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceTilePosition(UnityEngine.Vector2 newPosition) {
+    public void ReplaceTilePosition(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.TilePosition;
         var component = (TilePositionComponent)CreateComponent(index, typeof(TilePositionComponent));
-        component.value = newPosition;
+        component.value = newValue;
         ReplaceComponent(index, component);
     }
 

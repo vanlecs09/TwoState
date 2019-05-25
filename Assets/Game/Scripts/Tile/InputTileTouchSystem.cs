@@ -25,14 +25,11 @@ public class InputTileTouchSystem : ReactiveSystem<InputEntity>, ICleanupSystem
 
     protected override void Execute(List<InputEntity> entities)
     {
-        Debug.Log("touch");
         foreach (var e in entities)
         {
             var touchEntity = (GameEntity)e.touch.entity;
-            Debug.Log("touch " + touchEntity.tilePosition.value);
             _contexts.game.CreateUpdateBoardEntity(touchEntity.tilePosition.value);
             e.Destroy();
-            
         }
     }
 

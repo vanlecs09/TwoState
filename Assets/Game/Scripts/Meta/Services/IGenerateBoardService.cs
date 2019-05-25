@@ -8,4 +8,6 @@ public interface IGenerateBoardService
     int[,] GetBoard();
 
     void UpdateBoard(Vector2 position);
+
+    bool IsBoardClean();
 }

@@ -14,7 +14,7 @@ public class GenerateBoardService : IGenerateBoardService
         _demension  = demension;
         CreateAndResetBoard(demension);
 
-        int numberTouch = 20;
+        int numberTouch = 2;
         int currentTouch = 0;
         while (currentTouch < numberTouch)
         {
@@ -29,6 +29,20 @@ public class GenerateBoardService : IGenerateBoardService
     public void UpdateBoard(Vector2 position)
     {
         ChangeRelateStateFromPoint(position);
+    }
+
+    public bool IsBoardClean()
+    {
+        for (int i = 0; i < _demension.x; i++)
+        {
+            for (int j = 0; j < _demension.y; j++)
+            {
+                if(_board[i,j] == 1)
+                    return false;
+            }
+        }
+        
+        return true;
     }
 
     void ChangeRelateStateFromPoint(Vector2 nextPoint)

@@ -9,47 +9,68 @@
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
-    public const int Direction = 1;
-    public const int GenerateBoard = 2;
-    public const int Position = 3;
-    public const int PositionListener = 4;
-    public const int Rotation = 5;
-    public const int RotationListener = 6;
-    public const int Speed = 7;
-    public const int TileActive = 8;
-    public const int TileActiveListener = 9;
-    public const int TileCoponent = 10;
-    public const int Velocity = 11;
+    public const int Destroyed = 1;
+    public const int DestroyedListener = 2;
+    public const int Direction = 3;
+    public const int GenerateBoard = 4;
+    public const int Position = 5;
+    public const int PositionListener = 6;
+    public const int RayCast = 7;
+    public const int RectPosition = 8;
+    public const int RectPositionListener = 9;
+    public const int Rotation = 10;
+    public const int RotationListener = 11;
+    public const int Speed = 12;
+    public const int TileActive = 13;
+    public const int TileActiveListener = 14;
+    public const int Tile = 15;
+    public const int TilePosition = 16;
+    public const int UpdateBoard = 17;
+    public const int Velocity = 18;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 19;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "Destroyed",
+        "DestroyedListener",
         "Direction",
         "GenerateBoard",
         "Position",
         "PositionListener",
+        "RayCast",
+        "RectPosition",
+        "RectPositionListener",
         "Rotation",
         "RotationListener",
         "Speed",
         "TileActive",
         "TileActiveListener",
-        "TileCoponent",
+        "Tile",
+        "TilePosition",
+        "UpdateBoard",
         "Velocity"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
+        typeof(DestroyedComponent),
+        typeof(DestroyedListenerComponent),
         typeof(DirectionComponent),
         typeof(GenerateBoardComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
+        typeof(RayCastComponent),
+        typeof(RectPositionComponent),
+        typeof(RectPositionListenerComponent),
         typeof(RotationComponent),
         typeof(RotationListenerComponent),
         typeof(SpeedComponent),
         typeof(TileActiveComponent),
         typeof(TileActiveListenerComponent),
-        typeof(TileCoponent),
+        typeof(TileComponent),
+        typeof(TilePositionComponent),
+        typeof(UpdateBoardComponent),
         typeof(VelocityComponent)
     };
 }

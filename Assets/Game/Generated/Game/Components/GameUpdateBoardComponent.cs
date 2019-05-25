@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public TileCoponent tileCoponent { get { return (TileCoponent)GetComponent(GameComponentsLookup.TileCoponent); } }
-    public bool hasTileCoponent { get { return HasComponent(GameComponentsLookup.TileCoponent); } }
+    public UpdateBoardComponent updateBoard { get { return (UpdateBoardComponent)GetComponent(GameComponentsLookup.UpdateBoard); } }
+    public bool hasUpdateBoard { get { return HasComponent(GameComponentsLookup.UpdateBoard); } }
 
-    public void AddTileCoponent(UnityEngine.Vector2 newPosition) {
-        var index = GameComponentsLookup.TileCoponent;
-        var component = (TileCoponent)CreateComponent(index, typeof(TileCoponent));
+    public void AddUpdateBoard(UnityEngine.Vector2 newPosition) {
+        var index = GameComponentsLookup.UpdateBoard;
+        var component = (UpdateBoardComponent)CreateComponent(index, typeof(UpdateBoardComponent));
         component.position = newPosition;
         AddComponent(index, component);
     }
 
-    public void ReplaceTileCoponent(UnityEngine.Vector2 newPosition) {
-        var index = GameComponentsLookup.TileCoponent;
-        var component = (TileCoponent)CreateComponent(index, typeof(TileCoponent));
+    public void ReplaceUpdateBoard(UnityEngine.Vector2 newPosition) {
+        var index = GameComponentsLookup.UpdateBoard;
+        var component = (UpdateBoardComponent)CreateComponent(index, typeof(UpdateBoardComponent));
         component.position = newPosition;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveTileCoponent() {
-        RemoveComponent(GameComponentsLookup.TileCoponent);
+    public void RemoveUpdateBoard() {
+        RemoveComponent(GameComponentsLookup.UpdateBoard);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherTileCoponent;
+    static Entitas.IMatcher<GameEntity> _matcherUpdateBoard;
 
-    public static Entitas.IMatcher<GameEntity> TileCoponent {
+    public static Entitas.IMatcher<GameEntity> UpdateBoard {
         get {
-            if (_matcherTileCoponent == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TileCoponent);
+            if (_matcherUpdateBoard == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.UpdateBoard);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherTileCoponent = matcher;
+                _matcherUpdateBoard = matcher;
             }
 
-            return _matcherTileCoponent;
+            return _matcherUpdateBoard;
         }
     }
 }

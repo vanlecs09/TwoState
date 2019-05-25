@@ -16,9 +16,10 @@ public static class InputComponentsLookup {
     public const int ShowUiCommand = 5;
     public const int ShowUi = 6;
     public const int StartGame = 7;
-    public const int UiView = 8;
+    public const int Touch = 8;
+    public const int UiView = 9;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
         "Blockable",
@@ -29,6 +30,7 @@ public static class InputComponentsLookup {
         "ShowUiCommand",
         "ShowUi",
         "StartGame",
+        "Touch",
         "UiView"
     };
 
@@ -41,6 +43,7 @@ public static class InputComponentsLookup {
         typeof(ShowUiCommandComponent),
         typeof(ShowUiComponent),
         typeof(StartGameComponent),
+        typeof(TouchComponent),
         typeof(UiViewComponent)
     };
 }

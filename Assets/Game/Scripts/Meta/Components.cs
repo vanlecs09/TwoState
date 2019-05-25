@@ -27,6 +27,13 @@ public class GenerateBoardServiceComponent: IComponent
 
 
 [Game, Event(EventTarget.Self)]
+public class RectPositionComponent: IComponent
+{
+    public Vector3 value;
+}
+
+
+[Game, Event(EventTarget.Self)]
 public class PositionComponent: IComponent
 {
     public Vector3 value;
@@ -67,4 +74,21 @@ public class VelocityComponent: IComponent
 public class DirectionComponent: IComponent
 {
     public Vector3 direction;
+}
+
+[Game]
+public class RayCastComponent: IComponent
+{
+    
+}
+
+[Input]
+public class TouchComponent: IComponent
+{
+    public Entity entity;
+}
+
+[Game, Event(EventTarget.Self), Cleanup(CleanupMode.DestroyEntity)]
+public sealed class DestroyedComponent : IComponent
+{
 }

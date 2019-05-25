@@ -28,10 +28,7 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
         foreach (var e in entities)
         {
             _metaContext.generateBoardService.instance.GenerateBoard(new Vector2(5, 5));
-            // _metaContext.generateBoardService.instance.PrintBoard();
             int[,] baords = _metaContext.generateBoardService.instance.GetBoard();
-            // Debug.Log(baords);
-            // Debug.Log(baords.Length);
             for (int i = 0; i < 5; i++)
             {
                 for(int j = 0; j < 5; j ++) 
@@ -47,7 +44,7 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
     {
         foreach (var e in _movers)
         {
-            // e.Destroy();
+            e.Destroy();
         }
     }
 }

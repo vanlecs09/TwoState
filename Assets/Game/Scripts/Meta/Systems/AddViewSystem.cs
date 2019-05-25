@@ -10,7 +10,12 @@ public sealed class AddViewSystem : ReactiveSystem<GameEntity>, IInitializeSyste
 
     public AddViewSystem(Contexts contexts) : base(contexts.game)
     {
-        _parent = new GameObject("Views").transform;
+        var obj = new GameObject("Views");
+        // obj.AddComponent<Canvas>();
+        // obj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        _parent =obj.transform;
+        // _parent.gameObject.AddComponent<Canvas>();
+        // _parent.gameObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
         _contexts = contexts;
     }
 
@@ -19,11 +24,13 @@ public sealed class AddViewSystem : ReactiveSystem<GameEntity>, IInitializeSyste
         _viewService = _contexts.meta.viewService.instance;
     }
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    {
         return context.CreateCollector(GameMatcher.Asset);
     }
 
-    protected override bool Filter(GameEntity entity) {
+    protected override bool Filter(GameEntity entity)
+    {
         return entity.hasAsset;
     }
 

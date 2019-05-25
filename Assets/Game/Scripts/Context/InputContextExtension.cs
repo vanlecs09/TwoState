@@ -3,6 +3,12 @@ using UnityEngine;
 
 public static partial class InputContextExtension
 {
+    public static void CreateTouchAtTile(this InputContext inputContext, GameEntity touchEntity) 
+    {
+        InputEntity entity = inputContext.CreateEntity();
+        entity.AddTouch(touchEntity);
+    }
+    
     public static void CreateStartGameEntity (this InputContext inputContext, string difficulty) {
         var entity = inputContext.CreateEntity();
         entity.AddStartGame(difficulty);

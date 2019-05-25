@@ -2,10 +2,16 @@ using Entitas;
 using UnityEngine;
 using Entitas.CodeGeneration.Attributes;
 
-[Game]
-public class TileCoponent: IComponent
+[Game] 
+public class TilePositionComponent: IComponent
 {
-    public Vector2 position;
+    public Vector2 value;
+}
+
+[Game]
+public class TileComponent: IComponent
+{
+
 }
 
 [Game, Event(EventTarget.Self)]

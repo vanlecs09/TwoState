@@ -3,11 +3,18 @@ using UnityEngine;
 
 public static class GameContextEntesion
 {
-    public static void CreateGenerateBoardEntity(this GameContext gameContext) 
+    public static void CreateGenerateBoardEntity(this GameContext gameContext)
     {
         var entity = gameContext.CreateEntity();
         entity.isGenerateBoard = true;
     }
+
+    public static void CreateUpdateBoardEntity(this GameContext gameContext, Vector2 atPosition)
+    {
+        var entity = gameContext.CreateEntity();
+        entity.AddUpdateBoard(atPosition);
+    }
+
     public static void CreateSimpleMovingEntity(this GameContext gameContext)
     {
         var entity = gameContext.CreateEntity();
@@ -21,8 +28,9 @@ public static class GameContextEntesion
         var entity = gameContext.CreateEntity();
         entity.AddAsset("Prefabs/pref_Tile");
         entity.AddTileActive(isTileActive_);
-        entity.AddTileCoponent(Vector2.zero);
-        entity.AddPosition(new Vector3(-2.5f + tilePosition.x * 1.0f, -2.5f + tilePosition.y * 1.0f ));
+        entity.AddTilePosition(tilePosition);
+        entity.isTile = true;
+        entity.AddPosition(new Vector3(-2.5f + tilePosition.x * 1.0f, -2.5f + tilePosition.y * 1.0f));
     }
 
 }

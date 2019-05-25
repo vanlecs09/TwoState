@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using Entitas;
 using System.Collections.Generic;
+using Entitas.Unity;
 
 public class UnityViewService : IViewService
 {
@@ -33,6 +34,7 @@ public class UnityViewService : IViewService
                 listener.RegisterListeners(entity);
             }
             viewGo.transform.parent = parent.transform;
+            viewGo.Link(entity);
         } else {
             Debug.LogError("can not load game object " + assetName);
         }

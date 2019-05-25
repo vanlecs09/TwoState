@@ -13,15 +13,20 @@ public static class GameComponentsLookup {
     public const int GenerateBoard = 2;
     public const int Position = 3;
     public const int PositionListener = 4;
-    public const int Rotation = 5;
-    public const int RotationListener = 6;
-    public const int Speed = 7;
-    public const int TileActive = 8;
-    public const int TileActiveListener = 9;
-    public const int TileCoponent = 10;
-    public const int Velocity = 11;
+    public const int RayCast = 5;
+    public const int RectPosition = 6;
+    public const int RectPositionListener = 7;
+    public const int Rotation = 8;
+    public const int RotationListener = 9;
+    public const int Speed = 10;
+    public const int TileActive = 11;
+    public const int TileActiveListener = 12;
+    public const int Tile = 13;
+    public const int TilePosition = 14;
+    public const int UpdateBoard = 15;
+    public const int Velocity = 16;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -29,12 +34,17 @@ public static class GameComponentsLookup {
         "GenerateBoard",
         "Position",
         "PositionListener",
+        "RayCast",
+        "RectPosition",
+        "RectPositionListener",
         "Rotation",
         "RotationListener",
         "Speed",
         "TileActive",
         "TileActiveListener",
-        "TileCoponent",
+        "Tile",
+        "TilePosition",
+        "UpdateBoard",
         "Velocity"
     };
 
@@ -44,12 +54,17 @@ public static class GameComponentsLookup {
         typeof(GenerateBoardComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
+        typeof(RayCastComponent),
+        typeof(RectPositionComponent),
+        typeof(RectPositionListenerComponent),
         typeof(RotationComponent),
         typeof(RotationListenerComponent),
         typeof(SpeedComponent),
         typeof(TileActiveComponent),
         typeof(TileActiveListenerComponent),
-        typeof(TileCoponent),
+        typeof(TileComponent),
+        typeof(TilePositionComponent),
+        typeof(UpdateBoardComponent),
         typeof(VelocityComponent)
     };
 }

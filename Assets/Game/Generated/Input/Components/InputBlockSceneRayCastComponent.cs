@@ -9,19 +9,30 @@
 public partial class InputContext {
 
     public InputEntity blockSceneRayCastEntity { get { return GetGroup(InputMatcher.BlockSceneRayCast).GetSingleEntity(); } }
+    public BlockSceneRayCastComponent blockSceneRayCast { get { return blockSceneRayCastEntity.blockSceneRayCast; } }
+    public bool hasBlockSceneRayCast { get { return blockSceneRayCastEntity != null; } }
 
-    public bool isBlockSceneRayCast {
-        get { return blockSceneRayCastEntity != null; }
-        set {
-            var entity = blockSceneRayCastEntity;
-            if (value != (entity != null)) {
-                if (value) {
-                    CreateEntity().isBlockSceneRayCast = true;
-                } else {
-                    entity.Destroy();
-                }
-            }
+    public InputEntity SetBlockSceneRayCast(bool newIsPermanent, bool newIsInThisFrame) {
+        if (hasBlockSceneRayCast) {
+            throw new Entitas.EntitasException("Could not set BlockSceneRayCast!\n" + this + " already has an entity with BlockSceneRayCastComponent!",
+                "You should check if the context already has a blockSceneRayCastEntity before setting it or use context.ReplaceBlockSceneRayCast().");
         }
+        var entity = CreateEntity();
+        entity.AddBlockSceneRayCast(newIsPermanent, newIsInThisFrame);
+        return entity;
+    }
+
+    public void ReplaceBlockSceneRayCast(bool newIsPermanent, bool newIsInThisFrame) {
+        var entity = blockSceneRayCastEntity;
+        if (entity == null) {
+            entity = SetBlockSceneRayCast(newIsPermanent, newIsInThisFrame);
+        } else {
+            entity.ReplaceBlockSceneRayCast(newIsPermanent, newIsInThisFrame);
+        }
+    }
+
+    public void RemoveBlockSceneRayCast() {
+        blockSceneRayCastEntity.Destroy();
     }
 }
 
@@ -35,25 +46,27 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    static readonly BlockSceneRayCastComponent blockSceneRayCastComponent = new BlockSceneRayCastComponent();
+    public BlockSceneRayCastComponent blockSceneRayCast { get { return (BlockSceneRayCastComponent)GetComponent(InputComponentsLookup.BlockSceneRayCast); } }
+    public bool hasBlockSceneRayCast { get { return HasComponent(InputComponentsLookup.BlockSceneRayCast); } }
 
-    public bool isBlockSceneRayCast {
-        get { return HasComponent(InputComponentsLookup.BlockSceneRayCast); }
-        set {
-            if (value != isBlockSceneRayCast) {
-                var index = InputComponentsLookup.BlockSceneRayCast;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : blockSceneRayCastComponent;
+    public void AddBlockSceneRayCast(bool newIsPermanent, bool newIsInThisFrame) {
+        var index = InputComponentsLookup.BlockSceneRayCast;
+        var component = (BlockSceneRayCastComponent)CreateComponent(index, typeof(BlockSceneRayCastComponent));
+        component.isPermanent = newIsPermanent;
+        component.isInThisFrame = newIsInThisFrame;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceBlockSceneRayCast(bool newIsPermanent, bool newIsInThisFrame) {
+        var index = InputComponentsLookup.BlockSceneRayCast;
+        var component = (BlockSceneRayCastComponent)CreateComponent(index, typeof(BlockSceneRayCastComponent));
+        component.isPermanent = newIsPermanent;
+        component.isInThisFrame = newIsInThisFrame;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveBlockSceneRayCast() {
+        RemoveComponent(InputComponentsLookup.BlockSceneRayCast);
     }
 }
 

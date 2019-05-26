@@ -20,8 +20,6 @@ public class UnityUiManagementService : IUiManagementService
         _uiScreensData = uiScreensData;
 
         InitUiPrefabs(uiScreensData);
-        
-        Debug.Log(_canvasRootPrefab.name);
     }
 
     public void InitUiPrefabs (UiScreensData uiScreensData) {

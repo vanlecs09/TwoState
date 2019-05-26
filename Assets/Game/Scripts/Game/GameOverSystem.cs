@@ -4,9 +4,12 @@ using Entitas.Unity;
 
 public class GameOverSystem : ReactiveSystem<InputEntity>
 {
+    private readonly InputContext _inputContext;
     private readonly IGroup<InputEntity> _gameOvers;
+
     public GameOverSystem (Contexts contexts): base(contexts.input) {
-        _gameOvers = contexts.input.GetGroup(InputMatcher.GameOver);
+        _inputContext = contexts.input;
+        _gameOvers = _inputContext.GetGroup(InputMatcher.GameOver);
     }
 
     protected override void Execute(List<InputEntity> entities)
@@ -20,12 +23,12 @@ public class GameOverSystem : ReactiveSystem<InputEntity>
 
     protected override bool Filter(InputEntity entity)
     {
-        return entity.hasStartGame;
+        return entity.isGameOver;
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
-        return context.CreateCollector(InputMatcher.StartGame);
+        return context.CreateCollector(InputMatcher.GameOver);
     }
     
     public void Cleanup()
@@ -37,10 +40,7 @@ public class GameOverSystem : ReactiveSystem<InputEntity>
     }
 
     void ProcessGameOver (InputEntity entity) {
-        string difficulty = entity.startGame.diffculty;
-
-        // Generate board
-
         // Show GameOver Scene
+        _inputContext.CreateShowUiCommandEntity("GameOver");
     }
 }

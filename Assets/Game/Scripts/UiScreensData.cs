@@ -9,7 +9,7 @@ public class UiScreensData : ScriptableObject {
     public Dictionary<string, GameObject> GeneratePrefabDictionary () {
         var dict = new Dictionary<string, GameObject>();
         for (var i=0; i<uiScreensData.Length; i++) {
-            dict[uiScreensData[i].name] = uiScreensData[i].Prefab;
+            dict[uiScreensData[i].Id] = uiScreensData[i].Prefab;
         }
         return dict;
     }
@@ -17,7 +17,7 @@ public class UiScreensData : ScriptableObject {
     public Dictionary<string, UnityScreenScriptable> GenerateDataDictionary () {
         var dict = new Dictionary<string, UnityScreenScriptable>();
         for (var i=0; i<uiScreensData.Length; i++) {
-            dict[uiScreensData[i].name] = uiScreensData[i];
+            dict[uiScreensData[i].Id] = uiScreensData[i];
         }
         return dict;
     }

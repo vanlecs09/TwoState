@@ -43,7 +43,25 @@ public class HideUiCommandComponent: IComponent {
 
 [Input, Unique]
 public class BlockSceneRayCastComponent: IComponent {
-    // Global component to check if UI has block game screen
+    // Global component to check if UI has block game scene
+    public bool isPermanent;
+    public bool isInThisFrame;
+}
+
+[Input, Unique]
+public class SceneRaycastBlockerComponent: IComponent {
+    // Global component to check if UI has block game scene
+    public bool value;
+}
+
+[Input]
+public class PointerOverUiComponent: IComponent {
+    // if this component is presented, SceneRaycastBlocker = true
+}
+
+[Input]
+public class PermanentBlockRaycastComponent: IComponent {
+    // if this component is presented, SceneRaycastBlocker = true
 }
 
 [Meta, Unique]

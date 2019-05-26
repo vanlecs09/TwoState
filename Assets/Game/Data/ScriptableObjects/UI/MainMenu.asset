@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c3e99b583035e44bd455325a08c7ae, type: 3}
   m_Name: MainMenu
   m_EditorClassIdentifier: 
-  screenPrefab: {fileID: 875267234718749792, guid: 5cab1e115c50cdd48b2e0995bfcb5256,
+  id: MainMenu
+  screenPrefab: {fileID: 496553110948590895, guid: 5cab1e115c50cdd48b2e0995bfcb5256,
     type: 3}
-  isBlockable: 0
+  isBlockable: 1

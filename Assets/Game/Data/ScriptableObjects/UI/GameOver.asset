@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c3e99b583035e44bd455325a08c7ae, type: 3}
   m_Name: GameOver
   m_EditorClassIdentifier: 
-  screenPrefab: {fileID: 3039327757007725286, guid: 37cfde6f7d734184f848cfcdcdd150e9,
+  id: GameOver
+  screenPrefab: {fileID: 5132760780422283091, guid: 37cfde6f7d734184f848cfcdcdd150e9,
     type: 3}
   isBlockable: 1

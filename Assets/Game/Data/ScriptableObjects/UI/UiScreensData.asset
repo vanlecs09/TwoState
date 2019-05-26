@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7359c254060a3c4aa2fbcec1be32e90, type: 3}
   m_Name: UiScreensData
   m_EditorClassIdentifier: 
-  canvasRootPrefab: {fileID: 2834999365058378726, guid: db1d7db388cc7f94bb5fb1d249ab92fa,
+  canvasRootPrefab: {fileID: 5330018470739102717, guid: db1d7db388cc7f94bb5fb1d249ab92fa,
     type: 3}
   uiScreensData:
   - {fileID: 11400000, guid: 77ac10155e288ca4dad6d7af8ec3164d, type: 2}

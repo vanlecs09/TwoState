@@ -27,7 +27,7 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
     {
         foreach (var e in entities)
         {
-            _metaContext.generateBoardService.instance.GenerateBoard(new Vector2(5, 5));
+            _metaContext.generateBoardService.instance.GenerateBoard(new Vector2(10, 10), 5);
             var dimension = _metaContext.generateBoardService.instance.GetDimension();
 
             int[,] baords = _metaContext.generateBoardService.instance.GetBoard();

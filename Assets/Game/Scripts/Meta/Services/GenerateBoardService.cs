@@ -23,11 +23,11 @@ public class GenerateBoardService : IGenerateBoardService
         return _dimension;
     }
 
-    public void GenerateBoard(Vector2 boadDimension)
+    public void GenerateBoard(Vector2 boadDimension, int hardLevel = 2)
     {
         _dimension = boadDimension;
         CreateAndResetBoard(boadDimension);
-        _maxLevel = 2;
+        _maxLevel = hardLevel;
 
         while(IsBoardStillCanRandom())
         {

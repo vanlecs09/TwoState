@@ -14,7 +14,7 @@ public class GenerateBoardService2 : IGenerateBoardService
         return _demension;
     }
 
-    public void GenerateBoard(Vector2 demension)
+    public void GenerateBoard(Vector2 demension,  int hardLevel)
     {
         _demension  = demension;
         CreateAndResetBoard(demension);

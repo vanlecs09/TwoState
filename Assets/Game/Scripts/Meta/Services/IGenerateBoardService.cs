@@ -10,4 +10,6 @@ public interface IGenerateBoardService
     void UpdateBoard(Vector2 position);
 
     bool IsBoardClean();
+
+    Vector2 GetDimension();
 }

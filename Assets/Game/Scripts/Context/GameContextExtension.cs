@@ -23,14 +23,14 @@ public static class GameContextEntesion
         entity.AddVelocity(new Vector3(-3 + RandomUtility.Randfloat() * 6, 0, -2 + RandomUtility.Randfloat() * 2));
     }
 
-    public static void CreateTileEntity(this GameContext gameContext, Vector2 tilePosition, bool isTileActive_)
+    public static void CreateTileEntity(this GameContext gameContext, Vector2 tilePosition, bool isTileActive_, Vector2 dimension_)
     {
         var entity = gameContext.CreateEntity();
         entity.AddAsset("Prefabs/pref_Tile");
         entity.AddTileActive(isTileActive_);
         entity.AddTilePosition(tilePosition);
         entity.isTile = true;
-        entity.AddPosition(new Vector3(-2.5f + tilePosition.x * 1.0f, -2.5f + tilePosition.y * 1.0f));
+        entity.AddPosition(new Vector3(-dimension_.x*0.5f + tilePosition.x * 1.0f + 0.5f, -dimension_.y*0.5f + tilePosition.y * 1.0f));
     }
 
 }

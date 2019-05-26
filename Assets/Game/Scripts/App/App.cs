@@ -65,17 +65,6 @@ public class App : MonoBehaviour
         .Add(new GameEventSystems(contexts));
     }
 
-    private IEnumerator Spawn()
-    {
-        float extraTime = 0f;
-        while (true)
-        {
-            _contexts.game.CreateSimpleMovingEntity();
-            float spawnTime = Time.time;
-            yield return new WaitForSeconds(.77f);
-            extraTime = Time.time - .77f - spawnTime;
-        }
-    }
 
     void Update()
     {

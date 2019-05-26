@@ -25,6 +25,12 @@ public class GenerateBoardServiceComponent: IComponent
     public IGenerateBoardService instance;
 }
 
+[Meta, Unique]
+public class GameConfigureComponent: IComponent
+{
+    public IGameConfigureService instance;
+}
+
 
 [Game, Event(EventTarget.Self)]
 public class RectPositionComponent: IComponent

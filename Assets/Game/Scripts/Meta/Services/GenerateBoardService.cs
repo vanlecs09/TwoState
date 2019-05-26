@@ -6,7 +6,7 @@ public class GenerateBoardService : IGenerateBoardService
 {
     int[,] _board;
     Vector2 _dimension;
-    Dictionary<Vector2, int> _levelOfEachTile;
+    List<Vector2> _availablePoints;
     int _maxLevel;
 
     Vector2 _previousStep;
@@ -23,24 +23,24 @@ public class GenerateBoardService : IGenerateBoardService
         return _dimension;
     }
 
-    public void GenerateBoard(Vector2 boadDimension)
+    public void GenerateBoard(Vector2 boadDimension, int hardLevel = 2)
     {
-        _dimension = boadDimension;
-        CreateAndResetBoard(boadDimension);
-        _maxLevel = 2;
 
-        while(IsBoardStillCanRandom())
+        CreateAndResetBoard(boadDimension, hardLevel);
+
+
+        while (IsBoardStillCanRandom(_availablePoints))
         {
             var nextPoint = GetNextRandomPoint();
-            ChangeRelateStateFromPoint(nextPoint);
-            _previousStep = nextPoint;
+            UpdateBoardFromPoint( _board, nextPoint);
+            UpdateAvailablePoint(_availablePoints, nextPoint);
             PrintBoard();
         }
     }
 
     public void UpdateBoard(Vector2 position)
     {
-        ChangeRelateStateFromPoint(position);
+        UpdateBoardFromPoint(_board, position);
     }
 
     public bool IsBoardClean()
@@ -49,7 +49,7 @@ public class GenerateBoardService : IGenerateBoardService
         {
             for (int j = 0; j < _dimension.y; j++)
             {
-                if (_board[i, j] %2 != 0)
+                if (_board[i, j] % 2 != 0)
                     return false;
             }
         }
@@ -57,7 +57,7 @@ public class GenerateBoardService : IGenerateBoardService
         return true;
     }
 
-    void ChangeRelateStateFromPoint(Vector2 nextPoint)
+    void UpdateBoardFromPoint(int[,] boards, Vector2 nextPoint)
     {
         ChangeStateAtPoint(new Vector2(nextPoint.x + 1, nextPoint.y));
         ChangeStateAtPoint(new Vector2(nextPoint.x - 1, nextPoint.y));
@@ -68,32 +68,20 @@ public class GenerateBoardService : IGenerateBoardService
 
     void ChangeStateAtPoint(Vector2 nextPoint)
     {
-       if(IsPointOutSideOfBoard(nextPoint)) return;
+        if (IsPointOutSideOfBoard(nextPoint)) return;
         _board[(int)nextPoint.x, (int)nextPoint.y] += 1;
-        // _board[(int)nextPoint.x, (int)nextPoint.y] = _board[(int)nextPoint.x, (int)nextPoint.y] == 0 ? 1 : 0;
-        // _levelOfEachTile.try
     }
 
     bool IsPointOutSideOfBoard(Vector2 nextPoint)
     {
-         if (nextPoint.x > _dimension.x - 1 || nextPoint.x < 0 || nextPoint.y < 0 || nextPoint.y > _dimension.y - 1) return true;
-         else return false;
+        if (nextPoint.x > _dimension.x - 1 || nextPoint.x < 0 || nextPoint.y < 0 || nextPoint.y > _dimension.y - 1) return true;
+        else return false;
     }
 
 
-    bool IsBoardStillCanRandom()
+    bool IsBoardStillCanRandom(List<Vector2> avaiblePoint)
     {
-        for (int i = 0; i < _dimension.x; i++)
-        {
-            for (int j = 0; j < _dimension.y; j++)
-            {
-                // _board[i, j] = 0;
-                // _levelOfEachTile.Add(new Vector2(i, j), 0);
-                if(CheckLevelAroundPoint(new Vector2(i, j)) == true) 
-                    return true;
-            }
-        }
-        return false;
+        return avaiblePoint.Count > 0;
     }
 
     bool CheckLevelAroundPoint(Vector2 point)
@@ -110,23 +98,25 @@ public class GenerateBoardService : IGenerateBoardService
     {
         // int level = 0;
         // _levelOfEachTile.TryGetValue(point, out level);
-        if(IsPointOutSideOfBoard(point)) return true;
-        
-        return _board[(int)point.x,(int)point.y] + 1 < _maxLevel;
+        if (IsPointOutSideOfBoard(point)) return true;
+
+        return _board[(int)point.x, (int)point.y] + 1 <= _maxLevel;
     }
 
-    void CreateAndResetBoard(Vector2 demension)
+    void CreateAndResetBoard(Vector2 dimension, int hardLevel)
     {
+        _maxLevel = hardLevel;
+        _dimension = dimension;
         _systemRandom = new System.Random();
+        _availablePoints = new List<Vector2>();
         _previousStep = Vector2.zero;
-        _levelOfEachTile = new Dictionary<Vector2, int>();
-        _board = new int[(int)demension.x, (int)demension.y];
-        for (int i = 0; i < demension.x; i++)
+        _board = new int[(int)dimension.x, (int)dimension.y];
+        for (int i = 0; i < dimension.x; i++)
         {
-            for (int j = 0; j < demension.y; j++)
+            for (int j = 0; j < dimension.y; j++)
             {
                 _board[i, j] = 0;
-                _levelOfEachTile.Add(new Vector2(i, j), 0);
+                _availablePoints.Add(new Vector2(i, j));
             }
         }
     }
@@ -134,15 +124,17 @@ public class GenerateBoardService : IGenerateBoardService
     Vector2 GetNextRandomPoint()
     {
         Vector2 randomPoint = Vector2.zero;
-        do
-        {
-            var nextX = _systemRandom.Next(0, (int)(_dimension.x - 1));
-            var nextY = _systemRandom.Next(0, (int)(_dimension.y - 1));
-            randomPoint = new Vector2(nextX, nextY);
-            
-        } while (randomPoint.x == _previousStep.x && randomPoint.y == _previousStep.y && CheckLevelAroundPoint(randomPoint) == false);
-        Debug.Log(randomPoint);
+        var index = _systemRandom.Next(0, _availablePoints.Count - 1);
+        randomPoint = _availablePoints[index];
         return randomPoint;
+    }
+
+    void UpdateAvailablePoint(List<Vector2> avaiblePoint, Vector2 point)
+    {
+        if (CheckLevelAroundPoint(point) == false)
+        {
+            _availablePoints.Remove(point);
+        }
     }
 
     public void PrintBoard()

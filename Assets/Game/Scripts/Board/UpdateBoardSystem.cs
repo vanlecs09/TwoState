@@ -53,14 +53,8 @@ public class UpdateBoardSystem : ReactiveSystem<GameEntity>
 
             if (_metaContext.generateBoardService.instance.IsBoardClean())
             {
-                _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Tile));
-                foreach (var tile in _movers)
-                {
-                    // remove game object
-                    tile.isDestroyed = true;
-                }
-
-               _gameContext.CreateGenerateBoardEntity();
+                _gameContext.CreateClearBoardEntity();
+                _gameContext.CreateGenerateBoardEntity();
             }
         }
     }

@@ -9,6 +9,7 @@ public class ServiceRegistrationSystems : Feature
         Add(new RegisterObjectPoolServiceSystem(contexts, services.ObjectPool));
         Add(new ReigsterGenerateBoardService(contexts, services.GenerateBoard));
         Add(new RegisterUiManagementServiceSystem(contexts, services.UiManagement));
+        Add(new RegisterGameConfigureSystem(contexts, services.GameConfigure));
         // Add(new RegisterGameStateServiceSystem(contexts, services.GameState));
         // Add(new RegisterApplicationServiceSystem(contexts, services.Application));
         // Add(new RegisterInputServiceSystem(contexts, services.Input));

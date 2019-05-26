@@ -9,29 +9,31 @@
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
-    public const int Destroyed = 1;
-    public const int DestroyedListener = 2;
-    public const int Direction = 3;
-    public const int GenerateBoard = 4;
-    public const int Position = 5;
-    public const int PositionListener = 6;
-    public const int RayCast = 7;
-    public const int RectPosition = 8;
-    public const int RectPositionListener = 9;
-    public const int Rotation = 10;
-    public const int RotationListener = 11;
-    public const int Speed = 12;
-    public const int TileActive = 13;
-    public const int TileActiveListener = 14;
-    public const int Tile = 15;
-    public const int TilePosition = 16;
-    public const int UpdateBoard = 17;
-    public const int Velocity = 18;
+    public const int ClearBoard = 1;
+    public const int Destroyed = 2;
+    public const int DestroyedListener = 3;
+    public const int Direction = 4;
+    public const int GenerateBoard = 5;
+    public const int Position = 6;
+    public const int PositionListener = 7;
+    public const int RayCast = 8;
+    public const int RectPosition = 9;
+    public const int RectPositionListener = 10;
+    public const int Rotation = 11;
+    public const int RotationListener = 12;
+    public const int Speed = 13;
+    public const int TileActive = 14;
+    public const int TileActiveListener = 15;
+    public const int Tile = 16;
+    public const int TilePosition = 17;
+    public const int UpdateBoard = 18;
+    public const int Velocity = 19;
 
-    public const int TotalComponents = 19;
+    public const int TotalComponents = 20;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "ClearBoard",
         "Destroyed",
         "DestroyedListener",
         "Direction",
@@ -54,6 +56,7 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
+        typeof(ClearBoardComponent),
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
         typeof(DirectionComponent),

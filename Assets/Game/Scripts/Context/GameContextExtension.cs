@@ -3,6 +3,11 @@ using UnityEngine;
 
 public static class GameContextEntesion
 {
+    public static void CreateClearBoardEntity(this GameContext gameContext)
+    {
+        var entity = gameContext.CreateEntity();
+        entity.isClearBoard = true;
+    }
     public static void CreateGenerateBoardEntity(this GameContext gameContext)
     {
         var entity = gameContext.CreateEntity();

@@ -7,13 +7,16 @@ public class Services
     public readonly IObjectPoolService ObjectPool;
     public readonly IGenerateBoardService GenerateBoard;
     public readonly IUiManagementService UiManagement;
+    public readonly IGameConfigureService GameConfigure;
     // public readonly IInputService Input;
     // public readonly IAiService Ai;
     // public readonly IConfigurationService Config;
     // public readonly ICameraService Camera;
     // public readonly IPhysicsService Physics;
 
-    public Services(IViewService view, ITimeService time, IObjectPoolService objectPool, IGenerateBoardService generateBoard, IUiManagementService uiManagement)
+    public Services(IViewService view, ITimeService time,
+     IObjectPoolService objectPool, IGenerateBoardService generateBoard, 
+     IUiManagementService uiManagement, IGameConfigureService gameConfigure)
     {
         View = view;
         // Application = application;
@@ -21,6 +24,7 @@ public class Services
         ObjectPool = objectPool;
         GenerateBoard = generateBoard;
         UiManagement = uiManagement;
+        GameConfigure  = gameConfigure;
         // GameState = gameState;
         // Input = input;
         // Ai = ai;

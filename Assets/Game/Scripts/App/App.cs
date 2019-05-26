@@ -11,22 +11,18 @@ public class App : MonoBehaviour
     private Contexts _contexts;
     private Services _services;
 
+    // BoardConfig easy;
+    // BoardConfig hard;
+
+    [SerializeField] GameConfig _gameConfigure;
+
     void Start()
     {
         _contexts = Contexts.sharedInstance;
         CreateService();
         _systems = CreateSystems(_contexts);
-        // _contexts.game.CreateSimpleMovingEntity();
         _systems.Initialize();
         _contexts.game.CreateGenerateBoardEntity();
-        // for(int i = 0; i < 100; i++) {
-            // Debug.Log(GetNextRandomPoint());
-        // }
-    }
-
-    Vector2 GetNextRandomPoint()
-    {
-        return new Vector2(UnityEngine.Random.Range(0, 5), UnityEngine.Random.Range(0, 5));
     }
 
 
@@ -39,8 +35,9 @@ public class App : MonoBehaviour
                                 // new UnityApplicationService(), // gives app functionality like .Quit()
         new UnityTimeService(), // gives .deltaTime, .fixedDeltaTime etc
         new PrefabPoolService(),
-        new GenerateBoardService()
-        , new UnityUiManagementService(null)
+        new GenerateBoardService(),
+        new UnityUiManagementService(null),
+        new GameConfigureService(_gameConfigure)
         // new InControlInputService(), // provides user input
         // next two are monobehaviours attached to gamecontroller
         // GetComponent<UnityAiService>(), // async steering calculations on MB
@@ -57,6 +54,7 @@ public class App : MonoBehaviour
         // .Add(new LogSystems(contexts))
         .Add(new ServiceRegistrationSystems(contexts, _services))
         .Add(new InputTileTouchSystem(contexts))
+        .Add(new ClearBoardSystem(contexts))
         .Add(new GeneratteBoardSystem(contexts))
         .Add(new UpdateBoardSystem(contexts))
         .Add(new AddViewSystem(contexts))

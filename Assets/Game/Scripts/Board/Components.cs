@@ -13,3 +13,9 @@ public class UpdateBoardComponent: IComponent
 {
     public Vector2 position;
 }
+
+[Game]
+public class ClearBoardComponent: IComponent
+{
+    
+}

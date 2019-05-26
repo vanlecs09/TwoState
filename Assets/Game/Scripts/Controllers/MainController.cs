@@ -9,6 +9,7 @@ public class MainController : MonoBehaviour {
     Services _services;
 
     [SerializeField] UiScreensData uiScreensData = null;
+    [SerializeField] GameConfig gameConfig = null;
 
     private void Awake() {
         _services = new Services(
@@ -16,7 +17,8 @@ public class MainController : MonoBehaviour {
             , new UnityTimeService()
             , new PrefabPoolService()
             , new GenerateBoardService()
-            , new UnityUiManagementService(uiScreensData)
+            , new UnityUiManagementService(uiScreensData),
+            new GameConfigureService(gameConfig)
         );
     }
 

@@ -5,13 +5,13 @@ using UnityEngine;
 public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
 {
     GameContext _gameContext;
-    IGroup<GameEntity> _movers;
+    // IGroup<GameEntity> _movers;
     MetaContext _metaContext;
     public GeneratteBoardSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
         _metaContext = contexts.meta;
-        _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Rotation));
+        // _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Rotation));
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -27,7 +27,8 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
     {
         foreach (var e in entities)
         {
-            _metaContext.generateBoardService.instance.GenerateBoard(new Vector2(10, 10), 5);
+            BoardConfig boardConfigure= _metaContext.gameConfigure.instance.GetBoardConfigure("easy");
+            _metaContext.generateBoardService.instance.GenerateBoard(boardConfigure.BoardSize, boardConfigure.HardLevel);
             var dimension = _metaContext.generateBoardService.instance.GetDimension();
 
             int[,] baords = _metaContext.generateBoardService.instance.GetBoard();
@@ -35,18 +36,18 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
             {
                 for(int j = 0; j < dimension.y; j ++) 
                 {
-                    // Debug.Log(baords[i,j]);
                     _gameContext.CreateTileEntity(new Vector2(i, j), baords[i,j] %2  != 0, dimension);
                 }
             }
+            e.Destroy();
         }
     }
 
     public void Cleanup()
     {
-        foreach (var e in _movers)
-        {
-            e.Destroy();
-        }
+        // foreach (var e in _movers)
+        // {
+        //     e.Destroy();
+        // }
     }
 }

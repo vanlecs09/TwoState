@@ -7,6 +7,7 @@ public class GameOverController : MonoBehaviour
     }
 
     public void GoToMainMenu () {
+        Contexts.sharedInstance.game.CreateClearBoardEntity();
         Contexts.sharedInstance.input.CreateHideUiCommandEntity("GameOver");
         Contexts.sharedInstance.input.CreateShowUiCommandEntity("MainMenu");
     }

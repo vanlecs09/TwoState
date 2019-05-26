@@ -5,10 +5,12 @@ using Entitas.Unity;
 public class GameOverSystem : ReactiveSystem<InputEntity>
 {
     private readonly InputContext _inputContext;
+    private readonly GameContext _gameContext;
     private readonly IGroup<InputEntity> _gameOvers;
 
     public GameOverSystem (Contexts contexts): base(contexts.input) {
         _inputContext = contexts.input;
+        _gameContext = contexts.game;
         _gameOvers = _inputContext.GetGroup(InputMatcher.GameOver);
     }
 

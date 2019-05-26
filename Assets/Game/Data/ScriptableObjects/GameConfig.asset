@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa679738d87ab4f1387ebd7367143b70, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  BoardConfigs: []
+  BoardConfigs:
+  - {fileID: 11400000, guid: b379f43b4b9a8465b9cc26452db48b2e, type: 2}
+  - {fileID: 11400000, guid: cba0e96cb99a44317a6091f941b8e798, type: 2}

@@ -14,7 +14,8 @@ public class App : MonoBehaviour
     // BoardConfig easy;
     // BoardConfig hard;
 
-    [SerializeField] GameConfig _gameConfigure;
+    [SerializeField] UiScreensData uiScreensData = null;
+    [SerializeField] GameConfig _gameConfigure = null;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class App : MonoBehaviour
         CreateService();
         _systems = CreateSystems(_contexts);
         _systems.Initialize();
-        _contexts.game.CreateGenerateBoardEntity();
+        // _contexts.game.CreateGenerateBoardEntity();
     }
 
 
@@ -36,7 +37,7 @@ public class App : MonoBehaviour
         new UnityTimeService(), // gives .deltaTime, .fixedDeltaTime etc
         new PrefabPoolService(),
         new GenerateBoardService(),
-        new UnityUiManagementService(null),
+        new UnityUiManagementService(uiScreensData),
         new GameConfigureService(_gameConfigure)
         // new InControlInputService(), // provides user input
         // next two are monobehaviours attached to gamecontroller
@@ -53,6 +54,11 @@ public class App : MonoBehaviour
         return new Feature("Systems")
         // .Add(new LogSystems(contexts))
         .Add(new ServiceRegistrationSystems(contexts, _services))
+        .Add(new MainScreenInitSystem(contexts))        
+        .Add(new ShowHideUICommandSystem(contexts))
+        .Add(new ShowHideUiSystem(contexts))
+        .Add(new StartGameSystem(contexts))
+        .Add(new GameOverSystem(contexts))
         .Add(new InputTileTouchSystem(contexts))
         .Add(new ClearBoardSystem(contexts))
         .Add(new GeneratteBoardSystem(contexts))

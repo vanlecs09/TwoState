@@ -6,11 +6,13 @@ public class UpdateBoardSystem : ReactiveSystem<GameEntity>
 {
     GameContext _gameContext;
     MetaContext _metaContext;
+    InputContext _inputContext;
     IGroup<GameEntity> _movers;
     public UpdateBoardSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
         _metaContext = contexts.meta;
+        _inputContext = contexts.input;
         IGroup<GameEntity> _movers = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Tile));
     }
 
@@ -53,8 +55,9 @@ public class UpdateBoardSystem : ReactiveSystem<GameEntity>
 
             if (_metaContext.generateBoardService.instance.IsBoardClean())
             {
-                _gameContext.CreateClearBoardEntity();
-                _gameContext.CreateGenerateBoardEntity();
+                // _gameContext.CreateClearBoardEntity();
+                // _gameContext.CreateGenerateBoardEntity();
+                _inputContext.CreateGameOverEntity();
             }
         }
     }

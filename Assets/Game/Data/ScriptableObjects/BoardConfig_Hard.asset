@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f35df1f4370a47d58f29cbc8062cc4a, type: 3}
   m_Name: BoardConfig_Hard
   m_EditorClassIdentifier: 
-  HardLevel: 0
-  BoardSize: {x: 0, y: 0}
+  BoardName: hard
+  HardLevel: 1
+  BoardSize: {x: 10, y: 10}

@@ -27,7 +27,7 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
     {
         foreach (var e in entities)
         {
-            BoardConfig boardConfigure= _metaContext.gameConfigure.instance.GetBoardConfigure("easy");
+            BoardConfig boardConfigure= _metaContext.gameConfigure.instance.GetBoardConfigure(_metaContext.gameDifficulty.value);
             _metaContext.generateBoardService.instance.GenerateBoard(boardConfigure.BoardSize, boardConfigure.HardLevel);
             var dimension = _metaContext.generateBoardService.instance.GetDimension();
 

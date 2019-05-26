@@ -10,5 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f35df1f4370a47d58f29cbc8062cc4a, type: 3}
-  m_Name: Easy
+  m_Name: BoardConfig_Easy
   m_EditorClassIdentifier: 
+  BoardName: easy
+  HardLevel: 1
+  BoardSize: {x: 5, y: 5}

@@ -15,4 +15,4 @@ MonoBehaviour:
   id: GameOver
   screenPrefab: {fileID: 5132760780422283091, guid: 37cfde6f7d734184f848cfcdcdd150e9,
     type: 3}
-  isBlockable: 1
+  isBlockable: 0

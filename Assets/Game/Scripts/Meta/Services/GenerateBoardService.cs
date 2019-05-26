@@ -134,6 +134,11 @@ public class GenerateBoardService : IGenerateBoardService
         if (CheckLevelAroundPoint(point) == false)
         {
             _availablePoints.Remove(point);
+            Debug.Log("Wrong Move: " + point.x + point.y);
+        }
+        else
+        {
+            // Debug.Log("Right Move: " + point.x + point.y);
         }
     }
 

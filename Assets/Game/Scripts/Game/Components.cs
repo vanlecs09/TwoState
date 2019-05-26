@@ -68,3 +68,8 @@ public class PermanentBlockRaycastComponent: IComponent {
 public class UiManagementServiceComponent: IComponent {
     public IUiManagementService instance;
 }
+
+[Meta, Unique]
+public class GameDifficultyComponent: IComponent {
+    public string value;
+}

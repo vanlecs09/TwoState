@@ -15,4 +15,4 @@ MonoBehaviour:
   id: MainMenu
   screenPrefab: {fileID: 496553110948590895, guid: 5cab1e115c50cdd48b2e0995bfcb5256,
     type: 3}
-  isBlockable: 1
+  isBlockable: 0

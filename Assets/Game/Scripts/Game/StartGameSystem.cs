@@ -2,11 +2,22 @@ using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
 
-public class StartGameSystem : ReactiveSystem<InputEntity>
+public class StartGameSystem : ReactiveSystem<InputEntity>, IInitializeSystem
 {
+    private readonly GameContext _gameContext;
+    private readonly MetaContext _metaContext;
     private readonly IGroup<InputEntity> _startGames;
+    
     public StartGameSystem (Contexts contexts): base(contexts.input) {
+        _gameContext = contexts.game;
+        _metaContext = contexts.meta;
         _startGames = contexts.input.GetGroup(InputMatcher.StartGame);
+    }
+
+    public void Initialize()
+    {
+        // create global difficulty entity
+        _metaContext.ReplaceGameDifficulty("easy");
     }
 
     protected override void Execute(List<InputEntity> entities)
@@ -39,6 +50,9 @@ public class StartGameSystem : ReactiveSystem<InputEntity>
     void ProcessStartGame (InputEntity entity) {
         string difficulty = entity.startGame.diffculty;
 
+        _metaContext.ChangeGameDifficulty(difficulty);
+
         // Generate board
+        _gameContext.CreateGenerateBoardEntity();
     }
 }

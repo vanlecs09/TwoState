@@ -15,12 +15,12 @@ public class MainMenuController : MonoBehaviour
         // FindObjectOfType<App>().StartCoroutine(EndGame());
     }
 
-    private IEnumerator EndGame()
-    {
-        yield return new WaitForSeconds(5);
-        Debug.Log("Force GameOver here");
-        Contexts.sharedInstance.input.CreateGameOverEntity();
-    }
+    // private IEnumerator EndGame()
+    // {
+    //     yield return new WaitForSeconds(5);
+    //     Debug.Log("Force GameOver here");
+    //     Contexts.sharedInstance.input.CreateGameOverEntity();
+    // }
 
     public void QuitGame () {
         #if UNITY_EDITOR

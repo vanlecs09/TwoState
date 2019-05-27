@@ -32,8 +32,8 @@ public class GenerateBoardService : IGenerateBoardService
         while (IsBoardStillCanRandom(_availablePoints))
         {
             var nextPoint = GetNextRandomPoint();
-            UpdateBoardFromPoint( _board, nextPoint);
-            UpdateAvailablePoint(_availablePoints, nextPoint);
+            UpdateBoardFromPoint(_board, nextPoint);
+            UpdateAvailablePoint(_board, _dimension, _availablePoints);
             PrintBoard();
         }
     }
@@ -129,16 +129,23 @@ public class GenerateBoardService : IGenerateBoardService
         return randomPoint;
     }
 
-    void UpdateAvailablePoint(List<Vector2> avaiblePoint, Vector2 point)
+    void UpdateAvailablePoint(int[,] board, Vector2 dimension, List<Vector2> avaiblePoint)
     {
-        if (CheckLevelAroundPoint(point) == false)
+        for (int i = 0; i < dimension.x; i++)
         {
-            _availablePoints.Remove(point);
-            Debug.Log("Wrong Move: " + point.x + point.y);
-        }
-        else
-        {
-            // Debug.Log("Right Move: " + point.x + point.y);
+            for (int j = 0; j < dimension.y; j++)
+            {
+                Vector2 point = new Vector2(i, j);
+                if (CheckLevelAroundPoint(point) == false)
+                {
+                    _availablePoints.Remove(point);
+                    Debug.Log("Wrong Move: " + point.x + point.y);
+                }
+                else
+                {
+                    // Debug.Log("Right Move: " + point.x + point.y);
+                }
+            }
         }
     }
 

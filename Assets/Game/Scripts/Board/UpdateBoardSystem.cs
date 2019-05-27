@@ -55,8 +55,6 @@ public class UpdateBoardSystem : ReactiveSystem<GameEntity>
 
             if (_metaContext.generateBoardService.instance.IsBoardClean())
             {
-                // _gameContext.CreateClearBoardEntity();
-                // _gameContext.CreateGenerateBoardEntity();
                 _inputContext.CreateGameOverEntity();
             }
         }

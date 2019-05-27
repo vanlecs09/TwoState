@@ -53,7 +53,8 @@ public class StartGameSystem : ReactiveSystem<InputEntity>, IInitializeSystem
         string difficulty = entity.startGame.diffculty;
 
         _metaContext.ChangeGameDifficulty(difficulty);
-        _contexts.input.CreateShowUiCommandEntity("MainGame");
+        _contexts.input.CreateShowUiCommandEntity("GameHUD");
+        
         // Generate board
         _gameContext.CreateGenerateBoardEntity();
     }

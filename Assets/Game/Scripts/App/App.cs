@@ -59,7 +59,6 @@ public class App : MonoBehaviour
         .Add(new ShowHideUiSystem(contexts))
         .Add(new StartGameSystem(contexts))
         .Add(new GameOverSystem(contexts))
-        .Add(new GameMainSystem(contexts))
         .Add(new InputTileTouchSystem(contexts))
         .Add(new ClearBoardSystem(contexts))
         .Add(new GeneratteBoardSystem(contexts))

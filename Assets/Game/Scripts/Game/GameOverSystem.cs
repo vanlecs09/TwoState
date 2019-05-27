@@ -43,6 +43,7 @@ public class GameOverSystem : ReactiveSystem<InputEntity>
 
     void ProcessGameOver (InputEntity entity) {
         // Show GameOver Scene
+        _inputContext.CreateHideUiCommandEntity("GameHUD");
         _inputContext.CreateShowUiCommandEntity("GameOver");
     }
 }

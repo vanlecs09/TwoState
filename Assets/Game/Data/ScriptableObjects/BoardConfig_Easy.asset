@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BoardConfig_Easy
   m_EditorClassIdentifier: 
   BoardName: easy
-  HardLevel: 1
+  HardLevel: 3
   BoardSize: {x: 5, y: 5}

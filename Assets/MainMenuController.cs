@@ -12,15 +12,15 @@ public class MainMenuController : MonoBehaviour
         Contexts.sharedInstance.input.CreateHideUiCommandEntity("MainMenu");
         Contexts.sharedInstance.input.CreateStartGameEntity(difficulty);
 
-        FindObjectOfType<App>().StartCoroutine(EndGame());
+        // FindObjectOfType<App>().StartCoroutine(EndGame());
     }
 
-    private IEnumerator EndGame()
-    {
-        yield return new WaitForSeconds(5);
-        Debug.Log("Force GameOver here");
-        Contexts.sharedInstance.input.CreateGameOverEntity();
-    }
+    // private IEnumerator EndGame()
+    // {
+    //     yield return new WaitForSeconds(5);
+    //     Debug.Log("Force GameOver here");
+    //     Contexts.sharedInstance.input.CreateGameOverEntity();
+    // }
 
     public void QuitGame () {
         #if UNITY_EDITOR

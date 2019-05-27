@@ -10,10 +10,7 @@ public class UnityViewService : IViewService
 
     public void LoadAsset(Contexts contexts, IEntity entity, string assetName, Transform parent)
     {
-        var   gameObjet = GameObject.Instantiate(Resources.Load<GameObject>(assetName));
-
-
-        var viewGo = contexts.meta.objectPool.instance.Spawn(gameObjet);
+        var viewGo = GameObject.Instantiate(Resources.Load<GameObject>(assetName));
         if (viewGo != null)
         {
             var eventListeners = viewGo.GetComponents<IEventListener>();

@@ -6,11 +6,13 @@ public class StartGameSystem : ReactiveSystem<InputEntity>, IInitializeSystem
 {
     private readonly GameContext _gameContext;
     private readonly MetaContext _metaContext;
+    private readonly Contexts _contexts;
     private readonly IGroup<InputEntity> _startGames;
     
     public StartGameSystem (Contexts contexts): base(contexts.input) {
         _gameContext = contexts.game;
         _metaContext = contexts.meta;
+        _contexts = contexts;
         _startGames = contexts.input.GetGroup(InputMatcher.StartGame);
     }
 
@@ -51,7 +53,7 @@ public class StartGameSystem : ReactiveSystem<InputEntity>, IInitializeSystem
         string difficulty = entity.startGame.diffculty;
 
         _metaContext.ChangeGameDifficulty(difficulty);
-
+        _contexts.input.CreateShowUiCommandEntity("MainGame");
         // Generate board
         _gameContext.CreateGenerateBoardEntity();
     }

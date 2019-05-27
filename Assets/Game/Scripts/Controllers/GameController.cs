@@ -6,5 +6,6 @@ public class GameController: MonoBehaviour
     {
         Contexts.sharedInstance.game.CreateClearBoardEntity();
         Contexts.sharedInstance.game.CreateGenerateBoardEntity();
+        Contexts.sharedInstance.input.CreateShowUiCommandEntity("MainMenu");
     }
 }

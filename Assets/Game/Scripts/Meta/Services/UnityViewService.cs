@@ -10,20 +10,8 @@ public class UnityViewService : IViewService
 
     public void LoadAsset(Contexts contexts, IEntity entity, string assetName, Transform parent)
     {
+        var   gameObjet = GameObject.Instantiate(Resources.Load<GameObject>(assetName));
 
-        GameObject gameObjet = null;
-        if (_prefabSearchList.ContainsKey(assetName))
-        {
-            _prefabSearchList.TryGetValue(assetName, out gameObjet);
-        }
-        else
-        {
-#if UNITY_EDITOR
-            gameObjet = GameObject.Instantiate(Resources.Load<GameObject>(assetName));
-// #else 
-#endif
-            _prefabSearchList.Add(assetName, gameObjet);
-        }
 
         var viewGo = contexts.meta.objectPool.instance.Spawn(gameObjet);
         if (viewGo != null)

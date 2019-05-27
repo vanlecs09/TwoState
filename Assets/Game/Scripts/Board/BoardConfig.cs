@@ -4,7 +4,7 @@
 public class BoardConfig : ScriptableObject {
     [SerializeField]
     public string BoardName;
-    [SerializeField]
+    [SerializeField][Tooltip("Hard level must be odd positive number.")]
     public int HardLevel;
     [SerializeField]
     public Vector2 BoardSize;

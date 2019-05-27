@@ -12,7 +12,7 @@ public class MainMenuController : MonoBehaviour
         Contexts.sharedInstance.input.CreateHideUiCommandEntity("MainMenu");
         Contexts.sharedInstance.input.CreateStartGameEntity(difficulty);
 
-        FindObjectOfType<App>().StartCoroutine(EndGame());
+        // FindObjectOfType<App>().StartCoroutine(EndGame());
     }
 
     private IEnumerator EndGame()

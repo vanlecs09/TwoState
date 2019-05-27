@@ -36,7 +36,7 @@ public class App : MonoBehaviour
                                 // new UnityApplicationService(), // gives app functionality like .Quit()
         new UnityTimeService(), // gives .deltaTime, .fixedDeltaTime etc
         new PrefabPoolService(),
-        new GenerateBoardService(),
+        new GenerateBoardService3(),
         new UnityUiManagementService(uiScreensData),
         new GameConfigureService(_gameConfigure)
         // new InControlInputService(), // provides user input

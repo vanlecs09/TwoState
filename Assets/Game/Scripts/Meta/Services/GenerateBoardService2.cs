@@ -2,7 +2,7 @@ using UnityEngine;
 public class GenerateBoardService2 : IGenerateBoardService
 {
     int[,] _board;
-    Vector2 _demension;
+    Vector2 _dimension;
 
     public int[,] GetBoard()
     {
@@ -11,13 +11,13 @@ public class GenerateBoardService2 : IGenerateBoardService
 
     public Vector2 GetDimension()
     {
-        return _demension;
+        return _dimension;
     }
 
-    public void GenerateBoard(Vector2 demension,  int hardLevel)
+    public void GenerateBoard(Vector2 dimension,  int hardLevel)
     {
-        _demension  = demension;
-        CreateAndResetBoard(demension);
+        _dimension  = dimension;
+        CreateAndResetBoard(dimension);
 
         int numberTouch = 10;
         int currentTouch = 0;
@@ -36,9 +36,9 @@ public class GenerateBoardService2 : IGenerateBoardService
 
     public bool IsBoardClean()
     {
-        for (int i = 0; i < _demension.x; i++)
+        for (int i = 0; i < _dimension.x; i++)
         {
-            for (int j = 0; j < _demension.y; j++)
+            for (int j = 0; j < _dimension.y; j++)
             {
                 if(_board[i,j] == 1)
                     return false;
@@ -59,16 +59,16 @@ public class GenerateBoardService2 : IGenerateBoardService
 
     void ChangeStateAtPoint(Vector2 nextPoint)
     {
-        if(nextPoint.x > _demension.x - 1 || nextPoint.x < 0 || nextPoint.y  < 0 || nextPoint.y > _demension.y - 1) return;
+        if(nextPoint.x > _dimension.x - 1 || nextPoint.x < 0 || nextPoint.y  < 0 || nextPoint.y > _dimension.y - 1) return;
          _board[(int)nextPoint.x, (int)nextPoint.y] = _board[(int)nextPoint.x, (int)nextPoint.y] == 0 ? 1 : 0;
     }
 
-    void CreateAndResetBoard(Vector2 demension)
+    void CreateAndResetBoard(Vector2 dimension)
     {
-        _board = new int[(int)demension.x, (int)demension.y];
-        for (int i = 0; i < demension.x; i++)
+        _board = new int[(int)dimension.x, (int)dimension.y];
+        for (int i = 0; i < dimension.x; i++)
         {
-            for (int j = 0; j < demension.y; j++)
+            for (int j = 0; j < dimension.y; j++)
             {
                 _board[i,j] = 0;
             }
@@ -77,19 +77,19 @@ public class GenerateBoardService2 : IGenerateBoardService
 
     Vector2 GetNextRandomPoint()
     {
-        return new Vector2(Random.Range(0, (int)_demension.x - 3), Random.Range(0, (int)_demension.y - 3));
+        return new Vector2(Random.Range(0, (int)_dimension.x - 3), Random.Range(0, (int)_dimension.y - 3));
     }
 
     public void PrintBoard()
     {
         string c = "";
-         for (int i = 0; i < _demension.x; i++)
+         for (int i = 0; i < _dimension.x; i++)
         {
-            for (int j = 0; j < _demension.y; j++)
+            for (int j = 0; j < _dimension.y; j++)
             {
                 // _board[i,j] = 0;
                 c += _board[i,j] + " ";
-                if(j  == _demension.y - 1)
+                if(j  == _dimension.y - 1)
                 {
                     c += "\n";
                 }

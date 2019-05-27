@@ -31,12 +31,13 @@ public class GeneratteBoardSystem : ReactiveSystem<GameEntity>, ICleanupSystem
             _metaContext.generateBoardService.instance.GenerateBoard(boardConfigure.BoardSize, boardConfigure.HardLevel);
             var dimension = _metaContext.generateBoardService.instance.GetDimension();
 
-            int[,] baords = _metaContext.generateBoardService.instance.GetBoard();
+            int[,] boards = _metaContext.generateBoardService.instance.GetBoard();
+            // _metaContext.generateBoardService.instance.PrintBoard();
             for (int i = 0; i < dimension.x; i++)
             {
                 for(int j = 0; j < dimension.y; j ++) 
                 {
-                    _gameContext.CreateTileEntity(new Vector2(i, j), baords[i,j] %2  != 0, dimension);
+                    _gameContext.CreateTileEntity(new Vector2(i, j), boards[i,j] %2 != 0, dimension);
                 }
             }
             e.Destroy();

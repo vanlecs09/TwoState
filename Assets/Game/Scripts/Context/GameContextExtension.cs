@@ -35,7 +35,9 @@ public static class GameContextEntesion
         entity.AddTileActive(isTileActive_);
         entity.AddTilePosition(tilePosition);
         entity.isTile = true;
-        entity.AddPosition(new Vector3(-dimension_.x*0.5f + tilePosition.x * 1.0f + 0.5f, -dimension_.y*0.5f + tilePosition.y * 1.0f));
+
+        // (x,y) in board become (y,-x) in Unity cordinate system
+        entity.AddPosition(new Vector3(-dimension_.y*0.5f + tilePosition.y * 1.0f, dimension_.x*0.5f - tilePosition.x * 1.0f - 0.5f));
     }
 
 }

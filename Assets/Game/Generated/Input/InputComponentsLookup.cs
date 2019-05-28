@@ -8,15 +8,51 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
+    public const int Blockable = 0;
+    public const int BlockSceneRayCast = 1;
+    public const int Collision = 2;
+    public const int GameOver = 3;
+    public const int HideUiCommand = 4;
+    public const int PermanentBlockRaycast = 5;
+    public const int PointerOverUi = 6;
+    public const int SceneRaycastBlocker = 7;
+    public const int ShowUiCommand = 8;
+    public const int ShowUi = 9;
+    public const int StartGame = 10;
+    public const int Touch = 11;
+    public const int UiView = 12;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
-
+        "Blockable",
+        "BlockSceneRayCast",
+        "Collision",
+        "GameOver",
+        "HideUiCommand",
+        "PermanentBlockRaycast",
+        "PointerOverUi",
+        "SceneRaycastBlocker",
+        "ShowUiCommand",
+        "ShowUi",
+        "StartGame",
+        "Touch",
+        "UiView"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(BlockableComponent),
+        typeof(BlockSceneRayCastComponent),
+        typeof(CollisionComponent),
+        typeof(GameOverComponent),
+        typeof(HideUiCommandComponent),
+        typeof(PermanentBlockRaycastComponent),
+        typeof(PointerOverUiComponent),
+        typeof(SceneRaycastBlockerComponent),
+        typeof(ShowUiCommandComponent),
+        typeof(ShowUiComponent),
+        typeof(StartGameComponent),
+        typeof(TouchComponent),
+        typeof(UiViewComponent)
     };
 }

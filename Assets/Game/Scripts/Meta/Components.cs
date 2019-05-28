@@ -19,6 +19,25 @@ public class ObjectPoolComponent: IComponent
     public IObjectPoolService instance;
 }
 
+[Meta, Unique]
+public class GenerateBoardServiceComponent: IComponent
+{
+    public IGenerateBoardService instance;
+}
+
+[Meta, Unique]
+public class GameConfigureComponent: IComponent
+{
+    public IGameConfigureService instance;
+}
+
+
+[Game, Event(EventTarget.Self)]
+public class RectPositionComponent: IComponent
+{
+    public Vector3 value;
+}
+
 
 [Game, Event(EventTarget.Self)]
 public class PositionComponent: IComponent
@@ -61,4 +80,21 @@ public class VelocityComponent: IComponent
 public class DirectionComponent: IComponent
 {
     public Vector3 direction;
+}
+
+[Game]
+public class RayCastComponent: IComponent
+{
+    
+}
+
+[Input]
+public class TouchComponent: IComponent
+{
+    public Entity entity;
+}
+
+[Game, Event(EventTarget.Self), Cleanup(CleanupMode.DestroyEntity)]
+public sealed class DestroyedComponent : IComponent
+{
 }
